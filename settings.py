@@ -1,5 +1,5 @@
 USER_HOME = '/home/%(user)s'
-DOMAIN_HOME = '%(domain)s/public'
+DOCUMENT_ROOT = '%(domain)s/public'
 SFTP_GROUP = 'sftp'
 PASSWORD_SALT = 'en2llow9w'
 
@@ -13,9 +13,9 @@ APACHE_HOST_CONTENT = (
 
         AssignUserId %(user)s %(user)s
 
-        DocumentRoot "%(domain_home)s"
+        DocumentRoot "%(document_root)s"
 
-        <Directory "%(domain_home)s">
+        <Directory "%(document_root)s">
             AllowOverride all
             Require all granted
         </Directory>
