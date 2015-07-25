@@ -181,6 +181,7 @@ class MySQLDatabase(Userman):
             db=self.user,
             password=self.random_password()
         )
+        self.report('Please specify password for the MySQL root user.')
         sql = textwrap.dedent(settings.SQL_QUERY % kwargs)
         self.call('mysql -uroot -p -e "%(sql)s"' % dict(sql=sql))
         message = (
