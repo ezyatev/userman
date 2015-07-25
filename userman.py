@@ -17,6 +17,11 @@ Principles are:
     1. One domain per user.
     2. User can only log in via sftp and only in the own home directory. It is necessary to create the sftp user group.
     3. Separated database for the user.
+
+
+Possible sshd_config file settings:
+    Subsystem sftp internal-sftp
+        Match Group sftp
         ChrootDirectory %h
         ForceCommand internal-sftp
         AllowTcpForwarding no
