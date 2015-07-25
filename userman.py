@@ -26,6 +26,7 @@ import sys
 import crypt
 import textwrap
 import os
+import subprocess
 
 import settings
 from validator import User, DomainName
@@ -35,7 +36,8 @@ class Userman(object):
     def random_password(self):
         return self.call('mkpasswd %u' % uuid.uuid4())
 
-    def call(self, command):
+    @staticmethod
+    def call(command):
         output = None
         try:
             output = command
@@ -48,7 +50,8 @@ class Userman(object):
     def process(self):
         return NotImplementedError('You should to implement the process method.')
 
-    def report(self, message, **kwargs):
+    @staticmethod
+    def report(message, **kwargs):
         print(textwrap.dedent(message) % kwargs)
 
 
