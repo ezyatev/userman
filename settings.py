@@ -1,3 +1,15 @@
+r"""settings - configuration file for the userman utility.
+
+There are main configuration parameters in this file.
+
+"""
+
+__author__ = "Eugene L. Zyatev"
+__copyright__ = "Copyright 2015, The Userman Project"
+__license__ = "GPL"
+__version__ = "1.0.1"
+__email__ = "eu@f1dev.com"
+
 USER_HOME = '/home/%(user)s'
 DOCUMENT_ROOT = '%(domain)s/public'
 SFTP_GROUP = 'sftp'

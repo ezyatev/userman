@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 r"""userman - simple web server management tool.
 
 This script creates UNIX account, apache virtual host config for the specified domain name and MySQL database.
@@ -30,6 +32,12 @@ import subprocess
 
 import settings
 from validator import User, DomainName
+
+__author__ = "Eugene L. Zyatev"
+__copyright__ = "Copyright 2015, The Userman Project"
+__license__ = "GPL"
+__version__ = "1.0.1"
+__email__ = "eu@f1dev.com"
 
 
 class Userman(object):
