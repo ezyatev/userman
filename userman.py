@@ -54,7 +54,6 @@ class Userman(object):
     def call(command):
         output = None
         try:
-            output = command
             output = subprocess.check_output(command, shell=True)
         except Exception as e:
             print("An error occurred while processing '%s' command: %s." % (command, e))
