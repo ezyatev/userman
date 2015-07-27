@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-r"""userman - simple web server management tool.
+r"""simple web server management tool.
 
 This script creates UNIX account, apache virtual host config for the specified domain name and MySQL database.
 Tested with Apache/2.4+ on Debian 8 only.

@@ -1,4 +1,4 @@
-r"""validator - simple regular expression based validator for the strings
+r"""simple regular expression based validator for the strings
 
 This script provides simple validation.
 

@@ -1,4 +1,4 @@
-r"""settings - configuration file for the userman utility.
+r"""configuration file for the userman utility.
 
 There are main configuration parameters in this file.
 
