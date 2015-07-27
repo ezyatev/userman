@@ -45,6 +45,8 @@ __license__ = "GPL"
 __version__ = "1.0.1"
 __email__ = "eu@f1dev.com"
 
+sys.tracebacklimit = 0
+
 
 class Userman(object):
     def random_password(self):
