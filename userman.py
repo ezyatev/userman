@@ -160,6 +160,10 @@ class ApacheHost(Userman):
 
         self.report("Config file created: %(config_file)s\n", config_file=config_file)
 
+    def __restart_service(self):
+        self.call('service apache2 restart')
+        self.report("Apache service restarted.\n")
+
     def __enable_host(self):
         self.call('a2ensite %(domain)s' % dict(domain=self.domain))
 
@@ -167,6 +171,7 @@ class ApacheHost(Userman):
         self.__create_document_root()
         self.__write_config()
         self.__enable_host()
+        self.__restart_service()
 
 
 class MySQLDatabase(Userman):
