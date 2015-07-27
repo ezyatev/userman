@@ -145,7 +145,7 @@ class ApacheHost(Userman):
         ))
         self.report("\nDomain home path created: %(document_root)s", document_root=self.__document_root)
 
-    def write_config(self):
+    def __write_config(self):
         config_file = settings.APACHE_HOST_FILE % dict(domain=self.domain)
         content = settings.APACHE_HOST_CONTENT % dict(
             document_root=self.__document_root,
@@ -160,13 +160,13 @@ class ApacheHost(Userman):
 
         self.report("Config file created: %(config_file)s\n", config_file=config_file)
 
-    def enable_host(self):
+    def __enable_host(self):
         self.call('a2ensite %(domain)s' % dict(domain=self.domain))
 
     def process(self):
         self.__create_document_root()
-        self.write_config()
-        self.enable_host()
+        self.__write_config()
+        self.__enable_host()
 
 
 class MySQLDatabase(Userman):
