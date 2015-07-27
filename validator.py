@@ -30,6 +30,14 @@ class User(Validator):
             return True
         raise Exception('Incorrect username.')
 
+class DBName(Validator):
+    @staticmethod
+    def validate(string):
+        match = re.match('[a-z_]+', string)
+        if match:
+            return True
+        raise Exception('Incorrect database name.')
+
 
 class DomainName(Validator):
     @staticmethod

@@ -37,7 +37,7 @@ import os
 import subprocess
 
 import settings
-from validator import User, DomainName
+from validator import User, DomainName, DBName
 
 __author__ = "Eugene L. Zyatev"
 __copyright__ = "Copyright 2015, The Userman Project"
@@ -178,6 +178,7 @@ class MySQLDatabase(Userman):
     def __init__(self):
         super(MySQLDatabase, self).__init__()
         self.user = self.get_user()
+        self.db = self.get_db()
 
     @staticmethod
     def get_user():
@@ -185,10 +186,16 @@ class MySQLDatabase(Userman):
         if User.validate(user):
             return user
 
+    @staticmethod
+    def get_db():
+        db = raw_input('MySQL DB name: ')
+        if DBName.validate(db):
+            return db
+
     def process(self):
         kwargs = dict(
             user=self.user,
-            db=self.user,
+            db=self.db,
             password=self.random_password()
         )
         self.report('Please specify password for the MySQL root user.')
@@ -200,6 +207,7 @@ class MySQLDatabase(Userman):
             ------------------
             User: %(user)s
             Password: %(password)s
+            Database: %(db)s
             Host: localhost
             """
         )
