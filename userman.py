@@ -35,6 +35,7 @@ import crypt
 import textwrap
 import os
 import subprocess
+import errno
 
 import settings
 from validator import User, DomainName, DBName
@@ -57,9 +58,9 @@ class Userman(object):
         output = None
         try:
             output = subprocess.check_output(command, shell=True)
-        except Exception as e:
-            print("An error occurred while processing '%s' command: %s." % (command, e))
-            sys.exit()
+        except subprocess.CalledProcessError as grepexc:
+            print("An error occurred while processing '%s' command." % command)
+            sys.exit(grepexc.returncode)
         return output.strip()
 
     def process(self):
@@ -218,7 +219,8 @@ class MySQLDatabase(Userman):
 
 def main():
     if not os.geteuid() == 0:
-        sys.exit('Script must be run as root')
+        print('Script must be run as root')
+        sys.exit(errno.EACCES)
 
     plugins = {
         '--system': SystemUser,
