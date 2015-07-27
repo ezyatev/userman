@@ -208,6 +208,9 @@ class MySQLDatabase(Userman):
 
 
 def main():
+    if not os.geteuid() == 0:
+        sys.exit('Script must be run as root')
+
     plugins = {
         '--system': SystemUser,
         '--apache': ApacheHost,
