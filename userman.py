@@ -58,9 +58,9 @@ class Userman(object):
         output = None
         try:
             output = subprocess.check_output(command, shell=True)
-        except subprocess.CalledProcessError as grepexc:
+        except subprocess.CalledProcessError as e:
             print("An error occurred while processing '%s' command." % command)
-            sys.exit(grepexc.returncode)
+            sys.exit(e.returncode)
         return output.strip()
 
     def process(self):
