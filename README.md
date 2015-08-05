@@ -39,4 +39,4 @@ Available options:
 * You must have password for the root user to use `--mysql` feature.
 
 ## Author
-Eugene Zyatev ([eu@f1dev.com](Eugene Zyatev)).
+Eugene Zyatev ([eu@f1dev.com](mailto:eu@f1dev.com)).
