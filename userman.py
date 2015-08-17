@@ -92,7 +92,7 @@ class SystemUser(Userman):
             user_home=settings.USER_HOME % dict(user=self.user)
         )
         self.call(
-            'useradd -p %(crypted_password)s %(user)s -d %(user_home)s' % kwargs
+            'useradd -p %(crypted_password)s %(user)s -d %(user_home)s -m' % kwargs
         )
         message = (
             """
