@@ -110,9 +110,17 @@ class SystemUser(Userman):
         self.call('usermod -a -G %(group)s %(user)s' % kwargs)
         self.report("User %(user)s successfully added to the %(group)s group.\n", **kwargs)
 
+    def __change_owner(self):
+        kwargs = dict(
+            user_home=settings.USER_HOME % dict(user=self.user)
+        )
+        self.call('chown root:root %(user_home)s' % kwargs)
+        self.report("Successfully changed ownership for the %(user_home)s.\n", **kwargs)
+
     def process(self):
         self.__create()
         self.__add_to_group()
+        self.__change_owner()
 
 
 class ApacheHost(Userman):
