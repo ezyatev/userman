@@ -232,9 +232,11 @@ def main():
         sys.exit(errno.EACCES)
 
     plugins = OrderedDict(
-        ('--system', SystemUser),
-        ('--apache', ApacheHost),
-        ('--mysql', MySQLDatabase)
+        (
+            ('--system', SystemUser),
+            ('--apache', ApacheHost),
+            ('--mysql', MySQLDatabase)
+        )
     )
     for k in sys.argv[1:] or plugins.keys():
         plugin = plugins[k]()
