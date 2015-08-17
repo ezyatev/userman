@@ -36,6 +36,7 @@ import textwrap
 import os
 import subprocess
 import errno
+from collections import OrderedDict
 
 import settings
 from validator import User, DomainName, DBName
@@ -230,11 +231,11 @@ def main():
         print('Script must be run as root')
         sys.exit(errno.EACCES)
 
-    plugins = {
-        '--system': SystemUser,
-        '--apache': ApacheHost,
-        '--mysql': MySQLDatabase
-    }
+    plugins = OrderedDict(
+        ('--system', SystemUser),
+        ('--apache', ApacheHost),
+        ('--mysql', MySQLDatabase)
+    )
     for k in sys.argv[1:] or plugins.keys():
         plugin = plugins[k]()
         plugin.process()
