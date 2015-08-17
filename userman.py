@@ -235,7 +235,7 @@ def main():
         '--apache': ApacheHost,
         '--mysql': MySQLDatabase
     }
-    for k in sys.argv[1:]:
+    for k in sys.argv[1:] or plugins.keys():
         plugin = plugins[k]()
         plugin.process()
 
