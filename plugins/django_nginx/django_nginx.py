@@ -74,7 +74,7 @@ class DjangoNginx(Userman):
 
     def __enable_uwsgi_app(self):
         config_file = settings.UWSGI_APP_FILE % dict(project=self.project)
-        symlink = settings.UWSGI_APP_SYMLINK % dict(domain=self.project)
+        symlink = settings.UWSGI_APP_SYMLINK % dict(project=self.project)
         self.call('ln -s %(config_file)s %(symlink)s' % dict(config_file=config_file, symlink=symlink))
         self.report("Project %(project)s enabled.\n", project=self.project)
 
