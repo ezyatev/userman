@@ -238,7 +238,7 @@ def main():
             ('--mysql', MySQLDatabase)
         )
     )
-    for k in sys.argv[1:] or plugins.keys():
+    for k in sys.argv[1:]:
         plugin = plugins[k]()
         plugin.process()
 
