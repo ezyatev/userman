@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
-r"""Simple web server management tool.
-
-This script creates UNIX account, apache virtual host config for the specified domain name and MySQL database.
-Tested with Apache/2.4+ on Debian 8 only.
+r"""Script for automating web site deployments on Debian.
 
 usage: python userman.py [options]
 
@@ -12,7 +9,7 @@ Available options:
     --system - create UNIX account
     --apache - create apache virtual host config for the specified domain name
     --mysql - create MySQL user and database
-    --django-nginx - create Virtualenv, uWSGI and nginx config for the Django project
+    --django-nginx - create uWSGI and nginx config for the Django project
 
 
 Principles are:
