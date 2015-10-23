@@ -37,6 +37,7 @@ Available options:
 * `--django-nginx` - creates uWSGI and nginx config for Django project
 
 ## Notes
+* You must have `mkpasswd` app installed. The fact is that this utility is not available on his own, but seems to comes with the `whois` package.
 * You must have `apache2-mpm-itk` module installed to set owner of the PHP process.
 * You must have password for the root user to use `--mysql` feature.
 * You must have `uwsgi`, `uwsgi-plugin-python` and `virtualenv` installed to use `--django-nginx` feature.
