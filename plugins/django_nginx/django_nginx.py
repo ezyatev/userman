@@ -56,7 +56,7 @@ class DjangoNginx(Userman):
         f.write(content)
         f.close()
 
-        self.report("Config file created: %(config_file)s\n", config_file=config_file)
+        self.report("Nginx config file created: %(config_file)s\n", config_file=config_file)
 
     def __write_uwsgi_config(self):
         config_file = settings.UWSGI_APP_FILE % dict(project=self.project)
@@ -70,13 +70,13 @@ class DjangoNginx(Userman):
         f.write(content)
         f.close()
 
-        self.report("Config file created: %(config_file)s\n", config_file=config_file)
+        self.report("uWSGI config file created: %(config_file)s\n", config_file=config_file)
 
     def __enable_uwsgi_app(self):
         config_file = settings.UWSGI_APP_FILE % dict(project=self.project)
         symlink = settings.UWSGI_APP_SYMLINK % dict(domain=self.project)
         self.call('ln -s %(config_file)s %(symlink)s' % dict(config_file=config_file, symlink=symlink))
-        self.report("Project %(project)s enabled.\n", domain=self.project)
+        self.report("Project %(project)s enabled.\n", project=self.project)
 
     def __restart_uwsgi(self):
         self.call('service uwsgi restart')
