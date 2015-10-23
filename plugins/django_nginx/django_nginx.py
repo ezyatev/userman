@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 r"""Django Nginx plugin.
 
-Creates Virtualenv, uWSGI and nginx config for the Django project.
+Creates uWSGI and nginx config for the Django project.
 
 """
 
