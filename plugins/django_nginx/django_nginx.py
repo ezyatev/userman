@@ -78,10 +78,6 @@ class DjangoNginx(Userman):
         self.call('ln -s %(config_file)s %(symlink)s' % dict(config_file=config_file, symlink=symlink))
         self.report("Project %(project)s enabled.\n", project=self.project)
 
-    def __restart_uwsgi(self):
-        self.call('service uwsgi restart')
-        self.report("uWSGI service restarted.\n")
-
     def __enable_nginx_host(self):
         config_file = settings.VIRTUAL_HOST_FILE % dict(domain=self.domain)
         symlink = settings.VIRTUAL_HOST_SYMLINK % dict(domain=self.domain)
@@ -93,13 +89,12 @@ class DjangoNginx(Userman):
         self.report("nginx service restarted.\n")
 
     def __final_words(self):
-        self.report("Please create venv dir.\n")
+        self.report("[!] Please create virtualenv in the user's home dir, install Django and restart uWSGI service.\n")
 
     def process(self):
         self.__write_nginx_config()
         self.__write_uwsgi_config()
         self.__enable_uwsgi_app()
         self.__enable_nginx_host()
-        self.__restart_uwsgi()
         self.__restart_nginx()
         self.__final_words()
