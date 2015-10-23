@@ -32,6 +32,7 @@ Available options:
 * `--system` - creates UNIX account
 * `--apache` - creates apache virtual host config for the specified domain name
 * `--mysql` - creates MySQL user and database
+* `--django-nginx` - create Virtualenv, uWSGI and nginx config for the Django project
 
 ## Notes
 
