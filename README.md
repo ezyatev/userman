@@ -16,7 +16,8 @@ Principles are:
 3. Change `sshd_config` file like this:
 <pre>
 Subsystem sftp internal-sftp
-
+</pre>
+<pre>
 Match Group sftp
 ChrootDirectory %h
 ForceCommand internal-sftp
