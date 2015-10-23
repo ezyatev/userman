@@ -7,6 +7,7 @@ Creates Virtualenv, uWSGI and nginx config for the Django project.
 """
 
 from userman import Userman
+from . import settings
 
 __author__ = "Eugene L. Zyatev"
 __copyright__ = "Copyright 2015, The Userman Project"

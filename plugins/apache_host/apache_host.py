@@ -10,7 +10,7 @@ import textwrap
 import os
 
 from userman import Userman
-from . import settings
+from . import settings, templates
 from validators import DomainName, User
 
 __author__ = "Eugene L. Zyatev"
@@ -54,8 +54,8 @@ class ApacheHost(Userman):
         self.report("\nDomain home path created: %(document_root)s", document_root=self.__document_root)
 
     def __write_config(self):
-        config_file = settings.APACHE_HOST_FILE % dict(domain=self.domain)
-        content = settings.APACHE_HOST_CONTENT % dict(
+        config_file = settings.VIRTUAL_HOST_FILE % dict(domain=self.domain)
+        content = templates.VIRTUAL_HOST % dict(
             document_root=self.__document_root,
             domain=self.domain,
             user=self.user
