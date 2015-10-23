@@ -46,3 +46,56 @@ SQL_QUERY = (
     FLUSH PRIVILEGES;
     """
 )
+
+DJANGO_NGINX_HOST_FILE = '/etc/nginx/sites-available/%(domain)s'
+DJANGO_NGINX_HOST_CONTENT = (
+    """
+    server {
+        listen         80;
+        server_name    www.%(domain)s;
+        return         301 http://%(domain)s$request_uri;
+    }
+    server {
+        listen         80;
+
+        server_name    %(domain)s;
+
+        access_log     /var/log/nginx/%(domain)s.access.log;
+        error_log      /var/log/nginx/%(domain)s.error.log;
+
+        client_max_body_size 50m;
+
+        location /media/ {
+            alias      /home/%(user)s/%(project)s/media/;
+            add_header Pragma public;
+            add_header Cache-Control "public";
+            expires 30d;
+        }
+
+        location /static/ {
+            alias      /home/%(user)s/%(project)s/static/;
+            add_header Pragma public;
+            add_header Cache-Control "public";
+            expires 30d;
+        }
+
+        location / {
+            include    uwsgi_params;
+            uwsgi_pass unix:///var/run/uwsgi/app/%(project)s/socket;
+        }
+    }
+    """
+)
+
+DJANGO_UWSGI_APP_FILE = '/etc/uwsgi/apps-available/%(project)s.ini'
+DJANGO_UWSGI_APP_CONTENT = (
+    """
+    plugins=%(plugins)s
+    chdir=/home/%(user)s/%(project)s
+    virtualenv=/home/%(user)s/venv
+    module=%(project)s.wsgi:application
+    master=True
+    uid=%(user)s
+    gid=%(user)s
+    """
+)
