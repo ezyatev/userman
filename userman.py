@@ -12,6 +12,7 @@ Available options:
     --system - create UNIX account
     --apache - create apache virtual host config for the specified domain name
     --mysql - create MySQL user and database
+    --django-nginx - create Virtualenv, uWSGI and nginx config for the Django project
 
 
 Principles are:
@@ -226,6 +227,10 @@ class MySQLDatabase(Userman):
         self.report(message, **kwargs)
 
 
+class DjangoNginx(Userman):
+    pass
+
+
 def main():
     if not os.geteuid() == 0:
         print('Script must be run as root')
@@ -235,7 +240,8 @@ def main():
         (
             ('--system', SystemUser),
             ('--apache', ApacheHost),
-            ('--mysql', MySQLDatabase)
+            ('--mysql', MySQLDatabase),
+            ('--django-nginx', DjangoNginx)
         )
     )
     for k in sys.argv[1:]:
