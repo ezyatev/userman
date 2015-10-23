@@ -10,5 +10,8 @@ __license__ = "GPL"
 __version__ = "1.0.2"
 __email__ = "eu@f1dev.com"
 
+USER_HOME = '/home/%(user)s'
 VIRTUAL_HOST_FILE = '/etc/nginx/sites-available/%(domain)s'
+VIRTUAL_HOST_SYMLINK = '/etc/nginx/sites-enabled/%(domain)s'
 UWSGI_APP_FILE = '/etc/uwsgi/apps-available/%(project)s.ini'
+UWSGI_APP_SYMLINK = '/etc/uwsgi/apps-enabled/%(project)s.ini'

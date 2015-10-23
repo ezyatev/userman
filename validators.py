@@ -37,6 +37,15 @@ class DBName(Validator):
         raise Exception('Incorrect database name.')
 
 
+class ProjectName(Validator):
+    @staticmethod
+    def validate(string):
+        match = re.match('[a-z_]+', string)
+        if match:
+            return True
+        raise Exception('Incorrect project name.')
+
+
 class DomainName(Validator):
     @staticmethod
     def validate(string):

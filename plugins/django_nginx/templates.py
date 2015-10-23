@@ -51,7 +51,7 @@ VIRTUAL_HOST = (
 
 UWSGI_APP = (
     """
-    plugins=%(plugins)s
+    plugins=python27
     chdir=/home/%(user)s/%(project)s
     virtualenv=/home/%(user)s/venv
     module=%(project)s.wsgi:application
